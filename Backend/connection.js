@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
+const uri = process.env.MongoDB_URI;
+
 const connectionParams = {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 };
-const uri =
-  "mongodb+srv://nikoletanektarios:123@cluster0.y6tnhft.mongodb.net/?retryWrites=true&w=majority";
-//we need to name the dB in connection uri after net/
-
 
 const connection = mongoose
   .connect(uri, connectionParams)
@@ -14,4 +13,5 @@ const connection = mongoose
   .catch((err) => {
     console.log("Error connecting to database", err);
   });
+
 module.exports = connection;
