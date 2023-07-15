@@ -4,11 +4,11 @@ import HomePage from "./pages/HomePage";
 import CreateHome from "./pages/CreateHome";
 import { Routes, Route } from "react-router-dom";
 import UpdateHome from "./pages/UpdateHome";
-import ContainerOutsideExample from "./components/Navbar";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <>
-      <ContainerOutsideExample />
+      <Navbar />
       <Routes>
         <Route path="/" element={<SignupLoginPage />} />
         <Route path="/homes" element={<HomePage />} />
