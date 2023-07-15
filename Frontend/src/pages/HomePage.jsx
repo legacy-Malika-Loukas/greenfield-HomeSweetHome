@@ -12,14 +12,14 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/homes/")
+      .get("http://localhost:3636/homes/")
       .then((data) => setHomes(data.data))
       .catch((err) => console.log(err));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete("http://localhost:3000/homes/deleteHome/" + id)
+      .delete("http://localhost:3636/homes/deleteHome/" + id)
       .then((data) => {
         console.log(data);
         window.location.reload();

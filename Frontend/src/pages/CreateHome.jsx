@@ -11,7 +11,7 @@ function CreateHome() {
   const Submit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/homes/post", {
+      .post("http://localhost:3636/homes/post", {
         title,
         text,
         image,
