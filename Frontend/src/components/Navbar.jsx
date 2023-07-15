@@ -1,17 +1,24 @@
-import Container from "react-bootstrap/Container";
-import { Navbar, Button } from "react-bootstrap";
+import React from 'react';
+import './Navbar.css'; 
+import logo from '../images/sweet.png'; 
 
-function ContainerOutsideExample() {
+const Navbar = () => {
   return (
-    <Container>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="#">Home Sweet Home</Navbar.Brand>
-        </Container>
-        <Button variant="dark">Logout</Button>
-      </Navbar>
-    </Container>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <img 
+          src={logo}
+          alt="Logo"
+          className="logo"
+        />
+        <a href="/" className="navbar-link">Home</a>
+        <a href="/explore" className="navbar-link">Explore</a>
+      </div>
+      <div className="navbar-right">
+        <a href="/user-profile" className="navbar-link">User Profile</a>
+      </div>
+    </nav>
   );
-}
+};
 
-export default ContainerOutsideExample;
+export default Navbar;
