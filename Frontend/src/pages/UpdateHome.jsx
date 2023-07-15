@@ -12,7 +12,7 @@ function UpdateHome() {
   function Update(e) {
     e.preventDefault();
     axios
-      .put("http://localhost:3000/homes/updateHome/" + id, {
+      .put("http://localhost:3636/homes/updateHome/" + id, {
         title,
         text,
         image,
@@ -25,7 +25,7 @@ function UpdateHome() {
   }
   useEffect(() => {
     axios
-      .put("http://localhost:3000/homes/getHome/" + id)
+      .put("http://localhost:3636/homes/getHome/" + id)
       .then((data) => {
         console.log(data);
         setTitle(data.data.title);
