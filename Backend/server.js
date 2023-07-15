@@ -3,6 +3,7 @@ const cors = require("cors");
 require("./models/connection")
 const homeRouter = require("./router/homeRouter.js");
 const userRouter = require("./router/userRouter.js");
+const adminRouter = require("./router/adminRouter.js");
 
 const app = express();
 app.use(express.json());
@@ -15,7 +16,7 @@ app.use(
 
 app.use("/user", userRouter);
 app.use("/homes", homeRouter);
-
+app.use("/admin", adminRouter);
 
 const PORT = 3636;
 app.listen(PORT, () => {
