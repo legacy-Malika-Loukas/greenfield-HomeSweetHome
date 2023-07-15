@@ -34,9 +34,13 @@ const updateHome = (req, res) => {
     { _id: id },
     {
       title: req.body.title,
+      city: req.body.city,
+      address: req.body.address,
       text: req.body.text,
+      price: req.body.price,
       image: req.body.image,
-    }
+    },
+    { new: true } // Return the updated document
   )
     .then((homes) => res.json(homes))
     .catch((error) => res.json(error));
@@ -45,7 +49,12 @@ const updateHome = (req, res) => {
 const deleteHome = (req, res) => {
   const id = req.params.id;
   HomeModel.findByIdAndDelete({ _id: id })
-    .then((homes) => res.json(homes))
+    .then((home) => {
+      if (!home) {
+        return res.status(404).json({ message: "Home not found" });
+      }
+      res.json(home);
+    })
     .catch((error) => res.json(error));
 };
 
