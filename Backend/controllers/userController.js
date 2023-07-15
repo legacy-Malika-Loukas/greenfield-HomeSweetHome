@@ -21,7 +21,7 @@ var userSignup = async (req, res) => {
 
 var userLogin = async (req, res) => {
     var user = await User.findOne({email: req.body.email});
-    if(User){
+    if(user){
         bcrypt.compare(req.body.password, user.password, function (err, result){
             if (result){
                 //we create a token and then we send it back to the front

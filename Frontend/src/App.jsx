@@ -7,7 +7,7 @@ import UpdateHome from "./pages/UpdateHome";
 import Navbar from "./components/Navbar";
 import SlideNavbar from './components/SlideNavbar';
 import AdminSlideNav from "./components/AdminSlideNav";
-
+import Footer from './components/Footer';
 function App() {
   return (
     <>
@@ -20,6 +20,7 @@ function App() {
         <Route path="/create" element={<CreateHome />} />
         <Route path="/update/:id" element={<UpdateHome />} />
       </Routes>
+      <Footer />
     </>
   );
 }
