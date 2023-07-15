@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const SlideNavbar = () => {
+function AdminSlideNav() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -15,23 +15,6 @@ const SlideNavbar = () => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  };
-
-  const handleSignup = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:3636/user/signup", {
-        username,
-        password,
-      });
-
-      // Handle successful signup response
-      console.log("Signup:", response.data);
-    } catch (error) {
-      // Handle signup error
-      setErrorMessage("Please write a valid username");
-    }
   };
 
   const handleLogin = async (event) => {
@@ -53,47 +36,12 @@ const SlideNavbar = () => {
     }
   };
 
-  return (
+  return ( 
     <div className="main-slide-nav">
       {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-      <input type="checkbox" id="chk" aria-hidden="true" />
-
-      <div className="signup">
-        <form onSubmit={handleSignup}>
-
-          <label htmlFor="chk" aria-hidden="true">
-            Sign up
-          </label>
-
-          <br />
-
-          <input type="email"
-           name="email"
-           placeholder="Enter email"
-           required=""
-           value={username}
-           onChange={handleUsernameChange}
-          />
-
-          <br />
-
-          <input type="password"
-           name="pswd"
-           placeholder="Enter password"
-           required=""
-           value={password}
-           onChange={handlePasswordChange}
-          />
-
-          <br />
-          <button className='button-log'>Sign up</button>
-        </form>
-      </div>
-
-      <div className="login">
+      <div>
         <form onSubmit={handleLogin}>
-
-          <label htmlFor="chk" aria-hidden="true">
+          <label>
             Login
           </label>
 
@@ -102,7 +50,7 @@ const SlideNavbar = () => {
           <input
           type="email"
           name="email"
-          placeholder="Enter email"
+          placeholder="Email"
           required=""
           value={username}
           onChange={handleUsernameChange}
@@ -113,7 +61,7 @@ const SlideNavbar = () => {
           <input
           type="password"
           name="pswd"
-          placeholder="Enter password"
+          placeholder="Password"
           required=""
           value={password}
           onChange={handlePasswordChange}
@@ -121,12 +69,11 @@ const SlideNavbar = () => {
 
           <br />
 
-          <button className='button-log'>Login</button>
-
+          <button className="button-log" type="submit">Login</button>
         </form>
       </div>
     </div>
-  );
-};
+   );
+}
 
-export default SlideNavbar;
+export default AdminSlideNav;
