@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-require("./connection.js");
+require("./connection")
 const homeRouter = require("./router/homeRouter.js");
 const userRouter = require("./router/userRouter.js");
 

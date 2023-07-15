@@ -21,7 +21,7 @@ function AdminSlideNav() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3636/user/login", {
+      const response = await axios.post("http://localhost:3636/user/admin", {
         username,
         password,
       });
