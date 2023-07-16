@@ -28,6 +28,7 @@ const SlideNavbar = () => {
 
       // Handle successful signup response
       console.log("Signup:", response.data);
+      navigate("/create");
     } catch (error) {
       // Handle signup error
       setErrorMessage("Please write a valid username");
@@ -45,7 +46,7 @@ const SlideNavbar = () => {
 
       // Handle successful login response
       console.log("Login:", response.data);
-      navigate("/homes");
+      navigate("/create");
     } catch (error) {
       // Handle login error
       console.log(error);

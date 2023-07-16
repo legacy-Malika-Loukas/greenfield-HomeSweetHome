@@ -17,12 +17,13 @@ const HomeSchema = new mongoose.Schema({
         required: true
     },
     */
+  image: { type: String, required: true },
   title: { type: String, required: true },
   city: {  type: String, required: true},
   address: { type: String, required: true},
-  text: { type: String, required: true },
+  description: { type: String, required: true },
   price: { type: Number, required: true},
-  image: { type: String, required: true },
+//   openSpots: { type: Number, required: false},
 });
 
 const HomeModel = mongoose.model("homes", HomeSchema);

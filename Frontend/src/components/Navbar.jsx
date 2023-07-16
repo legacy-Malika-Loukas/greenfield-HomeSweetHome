@@ -6,7 +6,7 @@ const Navbar = () => {
   const handleLogout = () =>{
     // remove token when user logs out
     localStorage.removeItem("token"); 
-    //redirect to homepage after logout
+    // redirect to homepage after logout
     window.location.href="/"
   }
 
@@ -22,7 +22,7 @@ const Navbar = () => {
           className="logo"
         />
         <a href="/" className="navbar-link">Home</a>
-        <a href="/explore" className="navbar-link">Explore</a>
+        <a href="/homes" className="navbar-link">Explore</a>
       </div>
       <div className="navbar-right">
         <a href="/admin" className="navbar-link">Admin</a>

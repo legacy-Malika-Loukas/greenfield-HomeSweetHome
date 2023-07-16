@@ -3,18 +3,25 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function CreateHome() {
-  const [title, setTitle] = useState();
-  const [text, setText] = useState();
   const [image, setImage] = useState();
+  const [title, setTitle] = useState();
+  const [city, setCity] = useState();
+  const [address, setAddress] = useState();
+  const [description, setDescription] = useState();
+  const [price, setPrice] = useState();
+  
   const navigate = useNavigate();
 
   const Submit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3636/homes/post", {
-        title,
-        text,
         image,
+        title,
+        city,
+        address,
+        description,
+        price,
       })
       .then(data => {
         console.log(data)
@@ -29,7 +36,17 @@ function CreateHome() {
         <form onSubmit={Submit}>
           <h2>Add Home</h2>
           <div className="mb-2">
-            <label htmlFor="">title</label>
+            <label htmlFor="">Image</label>
+            <input
+              type="text"
+              placeholder="Enter Image"
+              className="form-control"
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-2">
+            <label htmlFor="">Title</label>
             <input
               type="text"
               placeholder="Enter Title"
@@ -37,22 +54,44 @@ function CreateHome() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
+
           <div className="mb-2">
-            <label htmlFor="">Text</label>
+            <label htmlFor="">City</label>
             <input
+              type="text"
+              placeholder="Enter City"
+              className="form-control"
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-2">
+            <label htmlFor="">Address</label>
+            <input
+              type="text"
+              placeholder="Enter City"
+              className="form-control"
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-2">
+            <label htmlFor="">Description</label>
+            <textarea
               type="text"
               placeholder="Enter Text"
               className="form-control"
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
+
           <div className="mb-2">
-            <label htmlFor="">Image</label>
+            <label htmlFor="">Price</label>
             <input
-              type="text"
-              placeholder="Enter Image"
+              type="number"
+              placeholder="Enter Price"
               className="form-control"
-              onChange={(e) => setImage(e.target.value)}
+              onChange={(e) => setPrice(e.target.value)}
             />
           </div>
 

@@ -11,4 +11,4 @@ async function main() {
   await mongoose.connect(uri);
 }
 
-module.exports = main;
+// module.exports = main;
