@@ -153,6 +153,15 @@ body{
 	transform: scale(.6);
 }
 
+.admin-p {
+  color: white;
+  margin-top: 20px;
+}
+
+.admin-p span {
+  cursor: pointer;
+}
+
 #chk:checked ~ .login{
 	transform: translateY(-500px);
 }

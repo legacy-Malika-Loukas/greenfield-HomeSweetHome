@@ -8,6 +8,7 @@ const adminSignUp = async (req, res) =>{
     const checkAdmin = await Admin.findOne({email: req.body.email})
     if (checkAdmin) {
       res.send({msg: "email already in use"})
+      return
     }
     bcrypt.genSalt(saltRounds, function(err, salt) {
       bcrypt.hash(req.body.password, salt, async function(err, hash) {
@@ -30,13 +31,13 @@ const adminLogin = async (req, res) =>{
       bcrypt.compare(req.body.password, admin.password, function(err, result) {
         if (result) {
           let token = jwt.sign({id:admin._id }, "legacy")
-          res.send(token)
+          res.send({token})
         } else {
-          return res.send({msg:'Invalid Password'})
+          res.send({msg:'Invalid Password'})
         }
       })
     } else {
-      return res.send({msg:"Admin not found!"});
+      res.send({msg:"Admin not found!"});
     }
   } catch (error) {
     console.log('login Error:', error);
@@ -49,12 +50,12 @@ const verifyAdmin = async (req, res) =>{
     return
   }
   try {
-    let payload = jwt.verify(req.body.token, "legacy")
+    const payload = jwt.verify(req.body.token, "legacy")
     if (payload) {
-      let admin = await Admin.findOne({_id: payload.id})
+      const admin = await Admin.findOne({_id: payload.id})
       if (admin) {
-        let token = jwt.sign({id: admin._id}, "legacy")
-        res.send(user)
+        const token = jwt.sign({id: admin._id}, "legacy")
+        res.send(admin)
 
       } else {
         res.send({message: 'Invalid token'});
