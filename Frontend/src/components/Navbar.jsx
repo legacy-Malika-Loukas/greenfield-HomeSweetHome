@@ -3,15 +3,14 @@ import logo from '../images/sweet.png';
 
 const Navbar = () => {
 
-  const handleLogout = () =>{
+  // const handleLogout = () =>{
     // remove token when user logs out
-    localStorage.removeItem("token"); 
+    // localStorage.removeItem("token"); 
     // redirect to homepage after logout
-    window.location.href="/"
-  }
-
+  //   window.location.href="/"
+  // }
   // if token exists, isLoggedIn becomes true and logout button appears
-  const isLoggedIn = !!localStorage.getItem("token");
+  // const isLoggedIn = !!localStorage.getItem("token");
 
   return (
     <nav className="navbar">
@@ -26,8 +25,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-right">
         <a href="/admin" className="navbar-link">Admin</a>
-        <a href="/profile" className="navbar-link">Profile</a>
-        {isLoggedIn && <a href="/" className="navbar-link" onClick={handleLogout}>Logout</a>}
+        <a href="/signup-login" className="navbar-link">SignUp/Login</a>
+        <a href="/" className="navbar-link">Logout</a>
       </div>
     </nav>
   );
