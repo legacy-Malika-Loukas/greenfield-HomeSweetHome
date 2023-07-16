@@ -26,9 +26,15 @@ const deleteHome = async (req, res) => {
   res.send({msg: "Home deleted successfully"})
 };
 
-const getAllUserHomes = async (rep, res)=> {
-  const homes = await HomeModel.find({userId: req.params.userId});
-  res.send(homes);
+const getAllUserHomes = async (req, res)=> {
+  try {
+    const homes = await HomeModel.find({userId: req.params.userId});
+    console.log(homes)
+    res.send(homes);
+  } catch (error) {
+    console.log("Error in getting user's all home", error);
+  }
+ 
 }
   
 
