@@ -58,6 +58,13 @@ const deleteHome = (req, res) => {
     .catch((error) => res.json(error));
 };
 
+const getAllUserHomes = async (rep, res)=> {
+  const homes = await HomeModel.find({userId: req.params.userId});
+  res.send(homes);
+}
+  
+
+
 module.exports = {
   createHome,
   getHomeById,
@@ -65,4 +72,5 @@ module.exports = {
   getHome,
   updateHome,
   deleteHome,
+  getAllUserHomes,
 };
