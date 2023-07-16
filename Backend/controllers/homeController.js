@@ -10,11 +10,11 @@ const getAllHomes = async (req, res) => {
   res.send(homes)
 };
 
-const getOneHome = async (req, res) => {
-  const home = await HomeModel.findOne({_id: req.params.id})
-  res.send(home)
+// const getOneHome = async (req, res) => {
+//   const home = await HomeModel.findOne({_id: req.params.id})
+//   res.send(home)
  
-};
+// };
 
 const updateHome = async (req, res) => {
   await HomeModel.findByIdAndUpdate({_id: req.params.id}, req.body)
@@ -42,7 +42,7 @@ const getAllUserHomes = async (req, res)=> {
 module.exports = {
   postHome,
   getAllHomes,
-  getOneHome,
+  // getOneHome,
   updateHome,
   deleteHome,
   getAllUserHomes,
