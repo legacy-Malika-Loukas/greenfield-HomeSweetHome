@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import SlideNavbar from './components/SlideNavbar';
 import AdminSlideNav from "./components/AdminSlideNav";
 import Footer from './components/Footer';
-import HomeLibrary from "./pages/ExploreLibrary";
+import AdminProfile from "./components/AdminProfile";
 import ExploreLibrary from "./pages/ExploreLibrary";
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/profile" element={<SlideNavbar/>} />
         <Route path="/admin" element={<AdminSlideNav/>} />
+        <Route path="/admin-profile" element={<AdminProfile/>} />
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreateHome />} />
         <Route path="/homes" element={<ExploreLibrary />} />
