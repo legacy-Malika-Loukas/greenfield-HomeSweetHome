@@ -18,6 +18,12 @@ function HomePage() {
       <HomeHeroSection />
       <br />
       <br />
+      <div className="featured-text">
+        <h2>Explore our Homes.</h2>
+        <p>A selection of homes for all your desires</p>
+      </div>
+      
+        <br />
       <section className="cards-list" >
         {info}
       </section>
