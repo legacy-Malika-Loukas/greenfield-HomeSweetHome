@@ -1,4 +1,4 @@
-import star from "../images/star.png"
+import star from "../../images/star.png"
 
 function HomeFeaturedSection(props) {
 

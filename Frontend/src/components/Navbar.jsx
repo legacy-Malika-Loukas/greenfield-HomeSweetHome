@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="navbar-right">
         {loggedIn ? (
           <>
-          <span className='navbar-link nav-span'>Welcome</span>
+          <a href='/user-profile' className='navbar-link'>User-Profile</a>
           <span onClick={() =>{
           logOut();
           }}

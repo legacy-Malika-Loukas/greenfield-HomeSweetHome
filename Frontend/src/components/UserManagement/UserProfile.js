@@ -5,23 +5,25 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import CreateHome from "./CreateHome";
-function UserPage() {
+
+function UserProfile() {
   const navigate = useNavigate();
   const [homes, setHomes] = useState([]);
   const [user, setUser] = useState(null);
 
   function getMyHomes(userId) {
     
-    axios.get("http://localhost:3636/homes/" + userId).then(({ data }) => {
+    axios.get(`http://localhost:3636/homes?userId=${userId}`).then(({ data }) => {
       console.log(data);
       setHomes(data);
     });
   }
 
   function handleDelete(id) {
-    axios
-      .delete(`http://localhost:3636/homes/delete/${id}`)
+    const confirmDelete = window.confirm("Are you sure you want to delete this home?")
+    if (confirmDelete) {
+      axios
+      .delete(`http://localhost:3636/homes/${id}`)
       .then((response) => {
         console.log("Home deleted successfully:", response.data);
         // After deleting the home, fetch the updated list of homes
@@ -30,6 +32,11 @@ function UserPage() {
       .catch((error) => {
         console.error("Error while deleting home:", error);
       });
+    }    
+  }
+
+  function handleUpdate(id) {
+    navigate(`/update/${id}`)
   }
 
   useEffect(() => {
@@ -41,18 +48,19 @@ function UserPage() {
         .then(({ data }) => {
           console.log(data);
           if (data._id) {
+            console.log({data})
             setUser(data);
             getMyHomes(data._id);
           } else {
-            navigate("/login");
+            navigate("/signup-login");
           }
         })
         .catch((error) => {
           console.error("Error while verifying token:", error);
-          navigate("/login");
+          navigate("/signup-login");
         });
     } else {
-      navigate("/login");
+      navigate("/signup-login");
     }
   }, [navigate]);
 
@@ -77,6 +85,9 @@ function UserPage() {
                   <Button variant="danger" onClick={() => handleDelete(home._id)}>
                     Delete
                   </Button>
+                  <Button variant="primary" onClick={() => handleUpdate(home._id)}>
+                    Update
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -91,4 +102,4 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+export default UserProfile;

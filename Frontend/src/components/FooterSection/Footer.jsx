@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.css'; // Create a CSS file for styling (Footer.css)
 
 const Footer = () => {
+  // eslint-disable-next-line 
   const handleGoToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
