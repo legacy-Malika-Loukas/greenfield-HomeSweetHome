@@ -9,6 +9,7 @@ import AdminSlideNav from "./components/AdminSlideNav";
 import Footer from './components/Footer';
 import AdminProfile from "./components/AdminProfile";
 import ExploreLibrary from "./pages/ExploreLibrary";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/admin" element={<AdminSlideNav/>} />
         <Route path="/admin-profile" element={<AdminProfile/>} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreateHome />} />
+        <Route path="/create" element={<UserPage />} />
         <Route path="/homes" element={<ExploreLibrary />} />
         <Route path="/update/:id" element={<UpdateHome />} />
       </Routes>
