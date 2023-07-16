@@ -1,4 +1,6 @@
 const Admin = require("../models/adminModel");
+const User = require("../models/user");
+const Home = require("../models/homeModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
@@ -68,8 +70,70 @@ const verifyAdmin = async (req, res) =>{
   }
 }
 
+// Delete User
+const deleteUser = async(req, res) =>{
+  const { userId } = req.params;
+  try {
+    await User.findByIdAndDelete(userId);
+    res.send({msg: "user deleted"})
+  } catch (error) {
+   res.send({error: "cannot delete user"})
+  }
+}
+
+// Add admin
+const addAdmin = async(req, res) =>{
+  const { username, password } = req.body;
+  try {
+    const newAdmin = await Admin.create({ username, password });
+    res.send(newAdmin)
+  } catch (error) {
+    res.send({error: "An error occurred while adding an admin"})
+  }
+}
+
+// Delete Admin
+const deleteAdmin = async(req, res) =>{
+  const { adminId } = req.params;;
+  try {
+    await User.findByIdAndDelete(adminId);
+    res.send({msg: "Admin deleted"})
+  } catch (error) {
+   res.send({error: "cannot delete Admin"})
+  }
+}
+
+const updateHome = async (req, res) => {
+  await HomeModel.findByIdAndUpdate({_id: req.params.id}, req.body)
+  res.send({msg: "Home updated successfully"})
+};
+
+const deleteHome = async (req, res) => {
+  await HomeModel.deleteOne({_id: req.params.id});
+  res.send({msg: "Home deleted successfully"})
+};
+
+const getAllUserHomes = async (req, res)=> {
+  try {
+    const homes = await HomeModel.find({userId: req.params.userId});
+    console.log(homes)
+    res.send(homes);
+  } catch (error) {
+    console.log("Error in getting user's all home", error);
+  }
+ 
+}
+
+
+
 module.exports = {
   adminSignUp,
   adminLogin,
-  verifyAdmin
+  verifyAdmin,
+  deleteUser,
+  addAdmin,
+  deleteAdmin,
+  updateHome,
+  deleteHome,
+  getAllUserHomes
 }
