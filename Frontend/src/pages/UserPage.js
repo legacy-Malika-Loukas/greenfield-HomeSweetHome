@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CreateHome from "./CreateHome";
 function UserPage() {
@@ -11,10 +12,24 @@ function UserPage() {
   const [user, setUser] = useState(null);
 
   function getMyHomes(userId) {
+    
     axios.get("http://localhost:3636/homes/" + userId).then(({ data }) => {
       console.log(data);
       setHomes(data);
     });
+  }
+
+  function handleDelete(id) {
+    axios
+      .delete(`http://localhost:3636/homes/delete/${id}`)
+      .then((response) => {
+        console.log("Home deleted successfully:", response.data);
+        // After deleting the home, fetch the updated list of homes
+        getMyHomes(user._id);
+      })
+      .catch((error) => {
+        console.error("Error while deleting home:", error);
+      });
   }
 
   useEffect(() => {
@@ -39,7 +54,7 @@ function UserPage() {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>
@@ -57,6 +72,11 @@ function UserPage() {
                   <Card.Text>{home.address}</Card.Text>
                   <Card.Text>{home.text}</Card.Text>
                   <Card.Text>{home.price}</Card.Text>
+
+                  {/* Add the Delete button */}
+                  <Button variant="danger" onClick={() => handleDelete(home._id)}>
+                    Delete
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -66,8 +86,7 @@ function UserPage() {
         <div>No homes found.</div>
         
       )}
-<button onClick={() => navigate("/homes")}>Add new house</button>
-<CreateHome />
+<button onClick={() => navigate("/create")}>Add new house</button>
    </div>
   );
 }
