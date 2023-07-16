@@ -17,8 +17,9 @@ function CreateHome() {
 
   const Submit = (e) => {
     e.preventDefault();
+    console.log("haha")
     axios
-      .post("http://localhost:3636/homes/post", {
+      .post("http://localhost:3636/homes/", {
         image,
         title,
         city,
@@ -29,7 +30,7 @@ function CreateHome() {
       })
       .then(data => {
         console.log(data)
-        navigate("/homes")
+        navigate("/profile")
       })
       .catch(error => console.log(error));
   };
@@ -99,7 +100,7 @@ function CreateHome() {
             />
           </div>
 
-          <button className="btn btn-success">Submit</button>
+          <button className="btn btn-success" >Submit</button>
         </form>
       </div>
     </div>
