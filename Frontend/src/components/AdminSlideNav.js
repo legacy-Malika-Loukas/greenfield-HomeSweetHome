@@ -5,30 +5,18 @@ import axios from "axios";
 function AdminSlideNav() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-
-  function handleLogin(e) {
-    e.preventDefault();
-    axios.post("http://localhost:3636/admin/login", {email, password}).then((response) => {
-      console.log(response.data)
-      if(response.data) {
-        localStorage.setItem('token', response.data);
-        console.log('Token saved in local storage.');
-        navigate("/homes")
+  function handleLogin() {
+    axios.post("http://localhost:3636/admin/login", {email, password}).then(({data}) => {
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/admin-profile")
       } else {
-        console.log(`Error ${response.status}: ${response.message}`);
-        // setErrorMessage("Incorrect password or email");
+        alert(data.msg)
+        setErrorMessage("Incorrect password or email");
       }
     })
     .catch((error) => {
@@ -36,13 +24,13 @@ function AdminSlideNav() {
     })
   }
 
-  // function toSignUp() {
-  //   navigate("/profile")
-  // }
+  function toSignUp() {
+    navigate("/profile")
+  }
 
   return ( 
     <div className="main-slide-nav">
-      {/* {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>} */}
+      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
       <div>
         <div>
           <label>
@@ -57,7 +45,9 @@ function AdminSlideNav() {
           placeholder="Email"
           required=""
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
           />
 
           <br />
@@ -68,12 +58,18 @@ function AdminSlideNav() {
           placeholder="Password"
           required=""
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e)=>{
+            setPassword(e.target.value);
+          }}
           />
 
           <br />
 
-          <button onClick={handleLogin} className="button-log" type="submit">Login</button>
+          <button onClick={() => {handleLogin()}} className="button-log" type="submit">Login</button>
+
+          <p className="admin-p">Not an admin? <span
+          onClick={() => {toSignUp()}}
+          >Go to signup/login</span></p>
         </div>
       </div>
     </div>
