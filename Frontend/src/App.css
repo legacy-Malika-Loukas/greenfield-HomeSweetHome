@@ -168,7 +168,7 @@ body{
 /* homepage hero section*/
 .hero-section img{
 	background-color: white;
-	height: 80vh;
+	height: 90vh;
 }
 
 .carousel-image-container {
@@ -193,6 +193,10 @@ body{
 
 
 /* Home Featured Section Card */
+.featured-text{
+margin: 20px 70px;
+}
+
 .cards-list {
   display: flex;
   flex-wrap: nowrap;

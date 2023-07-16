@@ -11,9 +11,10 @@ const userSignup = async (req, res) =>{
       }
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(req.body.password, salt, async function(err, hash) {
-          const user = { "email": req.body.email, "password": hash}
-          await User.create(user);
-          res.send({msg: "User created successfully"})         
+          const user = { email: req.body.email, password: hash}
+          const createdUser = await User.create(user);
+          const token = jwt.sign({id: createdUser._id}, "legacy")
+          res.send({token})         
         });
     });
     } catch (error) {
