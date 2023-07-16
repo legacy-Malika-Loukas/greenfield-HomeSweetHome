@@ -23,6 +23,7 @@ const HomeSchema = new mongoose.Schema({
   address: { type: String, required: true},
   description: { type: String, required: true },
   price: { type: Number, required: true},
+  userId: { type: String, required: true},
 //   openSpots: { type: Number, required: false},
 });
 

@@ -9,7 +9,10 @@ function CreateHome() {
   const [address, setAddress] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-  
+  const [user, setUser] = useState({
+    _id:"",
+    email:"",
+  });
   const navigate = useNavigate();
 
   const Submit = (e) => {
@@ -22,6 +25,7 @@ function CreateHome() {
         address,
         description,
         price,
+        userId: user._id,
       })
       .then(data => {
         console.log(data)
