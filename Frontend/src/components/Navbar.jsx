@@ -1,16 +1,17 @@
-import React from 'react';
 import logo from '../images/sweet.png'; 
+import { useNavigate } from 'react-router';
 
 const Navbar = () => {
+  let navigate=useNavigate();
+  const loggedIn = !!localStorage.getItem("token");
 
-  // const handleLogout = () =>{
-    // remove token when user logs out
-    // localStorage.removeItem("token"); 
-    // redirect to homepage after logout
-  //   window.location.href="/"
-  // }
-  // if token exists, isLoggedIn becomes true and logout button appears
-  // const isLoggedIn = !!localStorage.getItem("token");
+  function logOut() {
+    const confirmation = window.confirm("Are you sure you want to log out?");
+    if (confirmation) {
+      localStorage.removeItem("token");
+    navigate("/")
+    }
+  }
 
   return (
     <nav className="navbar">
@@ -24,9 +25,20 @@ const Navbar = () => {
         <a href="/homes" className="navbar-link">Explore</a>
       </div>
       <div className="navbar-right">
-        <a href="/admin" className="navbar-link">Admin</a>
-        <a href="/signup-login" className="navbar-link">SignUp/Login</a>
-        <a href="/" className="navbar-link">Logout</a>
+        {loggedIn ? (
+          <>
+          <span className='navbar-link nav-span'>Welcome</span>
+          <span onClick={() =>{
+          logOut();
+          }}
+          className="navbar-link nav-span">Logout</span>
+          </>
+        ) : (
+          <>
+          <a href="/admin" className="navbar-link">Admin-Login</a>
+          <a href="/signup-login" className="navbar-link">SignUp/Login</a>
+          </>
+        )}       
       </div>
     </nav>
   );

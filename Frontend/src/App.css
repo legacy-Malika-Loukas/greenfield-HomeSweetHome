@@ -76,6 +76,9 @@ body{
   margin-right: 10px;
 }
 
+.nav-span{
+  cursor: pointer;
+}
 
 
 
