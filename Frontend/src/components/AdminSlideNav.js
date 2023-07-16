@@ -25,7 +25,7 @@ function AdminSlideNav() {
   }
 
   function toSignUp() {
-    navigate("/profile")
+    navigate("/signup-login")
   }
 
   return ( 

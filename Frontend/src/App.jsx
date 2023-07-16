@@ -16,11 +16,12 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/profile" element={<SlideNavbar/>} />
+        <Route path="/signup-login" element={<SlideNavbar/>} />
         <Route path="/admin" element={<AdminSlideNav/>} />
         <Route path="/admin-profile" element={<AdminProfile/>} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<UserPage />} />
+        <Route path="/create" element={<CreateHome />} />
+        <Route path="/profile" element={<UserPage/>} />
         <Route path="/homes" element={<ExploreLibrary />} />
         <Route path="/update/:id" element={<UpdateHome />} />
       </Routes>
