@@ -5,7 +5,7 @@ import axios from "axios";
 function AdminSlideNav() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function AdminSlideNav() {
         navigate("/homes")
       } else {
         console.log(`Error ${response.status}: ${response.message}`);
-        setErrorMessage("Incorrect password or email");
+        // setErrorMessage("Incorrect password or email");
       }
     })
     .catch((error) => {
@@ -36,11 +36,15 @@ function AdminSlideNav() {
     })
   }
 
+  // function toSignUp() {
+  //   navigate("/profile")
+  // }
+
   return ( 
     <div className="main-slide-nav">
-      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+      {/* {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>} */}
       <div>
-        <form onSubmit={handleLogin}>
+        <div>
           <label>
             Login
           </label>
@@ -69,8 +73,8 @@ function AdminSlideNav() {
 
           <br />
 
-          <button className="button-log" type="submit">Login</button>
-        </form>
+          <button onClick={handleLogin} className="button-log" type="submit">Login</button>
+        </div>
       </div>
     </div>
    );
