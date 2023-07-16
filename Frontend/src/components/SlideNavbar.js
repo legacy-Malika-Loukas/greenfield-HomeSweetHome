@@ -3,56 +3,47 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const SlideNavbar = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  const handleSignup = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:3636/user/signup", {
-        username,
-        password,
+  function handleSignup(event) {
+    event.preventDefault(); // Prevent default form submission
+    axios.post("http://localhost:3636/user/signup", { email, password })
+      .then(({ data }) => {
+        console.log(data);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/create");
+        } else {
+          setErrorMessage("Please write a valid username");
+        }
       });
+  }
 
-      // Handle successful signup response
-      console.log("Signup:", response.data);
-      navigate("/create");
-    } catch (error) {
-      // Handle signup error
-      setErrorMessage("Please write a valid username");
-    }
-  };
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:3636/user/login", {
-        username,
-        password,
+  function handleLogin(event) {
+    event.preventDefault(); // Prevent default form submission
+    axios.post("http://localhost:3636/user/login", { email, password })
+      .then(({ data }) => {
+        console.log(data);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/create");
+        } else {
+          alert(data.msg);
+        }
       });
-
-      // Handle successful login response
-      console.log("Login:", response.data);
-      navigate("/create");
-    } catch (error) {
-      // Handle login error
-      console.log(error);
-      setErrorMessage("Incorrect password or username");
-    }
-  };
+  }
 
   return (
     <div className="main-slide-nav">
@@ -61,31 +52,27 @@ const SlideNavbar = () => {
 
       <div className="signup">
         <form onSubmit={handleSignup}>
-
           <label htmlFor="chk" aria-hidden="true">
             Sign up
           </label>
-
           <br />
-
-          <input type="email"
-           name="email"
-           placeholder="Enter email"
-           required=""
-           value={username}
-           onChange={handleUsernameChange}
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required=""
+            value={email}
+            onChange={handleEmailChange}
           />
-
           <br />
-
-          <input type="password"
-           name="pswd"
-           placeholder="Enter password"
-           required=""
-           value={password}
-           onChange={handlePasswordChange}
+          <input
+            type="password"
+            name="pswd"
+            placeholder="Enter password"
+            required=""
+            value={password}
+            onChange={handlePasswordChange}
           />
-
           <br />
           <button className='button-log'>Sign up</button>
         </form>
@@ -93,37 +80,29 @@ const SlideNavbar = () => {
 
       <div className="login">
         <form onSubmit={handleLogin}>
-
           <label htmlFor="chk" aria-hidden="true">
             Login
           </label>
-
           <br />
-
           <input
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          required=""
-          value={username}
-          onChange={handleUsernameChange}
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required=""
+            value={email}
+            onChange={handleEmailChange}
           />
-
           <br />
-
           <input
-          type="password"
-          name="pswd"
-          placeholder="Enter password"
-          required=""
-          value={password}
-          onChange={handlePasswordChange}
+            type="password"
+            name="pswd"
+            placeholder="Enter password"
+            required=""
+            value={password}
+            onChange={handlePasswordChange}
           />
-
           <br />
-
           <button className='button-log'>Login</button>
-
         </form>
       </div>
     </div>
