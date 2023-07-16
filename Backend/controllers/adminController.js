@@ -28,7 +28,7 @@ const adminLogin = async (req, res) =>{
     if (admin) {
       bcrypt.compare(req.body.password, admin.password, function(err, result) {
         if (result) {
-          let token = jwt.sign({id:admin._id }, "souvlaki", {expiresIn: 60 * 60})
+          let token = jwt.sign({id:admin._id }, "souvlaki")
           res.send(token)
         } else {
           return res.send({msg:'Invalid Password'})
@@ -45,17 +45,19 @@ const adminLogin = async (req, res) =>{
 const verifyAdmin = async (req, res) =>{
   if (!req.body.token) {
     res.send({msg:false});
+    return
   }
   try {
     let payload = jwt.verify(req.body.token, "souvlaki")
     if (payload) {
       let admin = await Admin.findOne({_id: payload.id})
       if (admin) {
-        let token = jwt.sign({id: admin._id}, "souvlaki", {expiresIn: 60 * 60})
+        let token = jwt.sign({id: admin._id}, "souvlaki")
         res.send({
           data: admin,
           token: token
         })
+
       } else {
         res.send({message: 'Invalid token'});
       }
