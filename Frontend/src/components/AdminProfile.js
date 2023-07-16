@@ -1,6 +1,24 @@
-
+// import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 function AdminProfile() {
+  // const navigate = useNavigate();
+  // const [userDetails, setUserDetails] = useState({
+  //   _id: "",
+  //   email: "",
+  // }); 
+
+  // useEffect(() =>{
+  //   if (localStorage.getItem("token")) {
+  //     let token = localStorage.getItem('token');
+  //     console.log(token);
+  //     axios.get("").then()
+  //   } else {
+      
+  //   }
+  // })
+
   return ( 
     <div>
       This is the admin profile page.
