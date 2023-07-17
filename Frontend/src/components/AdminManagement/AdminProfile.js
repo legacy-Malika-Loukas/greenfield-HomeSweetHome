@@ -1,27 +1,29 @@
 // import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import axios from "axios";
+import UsersList from "./AdminUserList";
 
 function AdminProfile() {
-  // const navigate = useNavigate();
-  // const [userDetails, setUserDetails] = useState({
-  //   _id: "",
-  //   email: "",
-  // }); 
+  const navigate = useNavigate();
 
-  // useEffect(() =>{
-  //   if (localStorage.getItem("token")) {
-  //     let token = localStorage.getItem('token');
-  //     console.log(token);
-  //     axios.get("").then()
-  //   } else {
-      
-  //   }
-  // })
+  function createAdmin(id) {
+    navigate("admin/create")
+  }
+
 
   return ( 
     <div>
-      This is the admin profile page.
+      <h1>This is the admin profile page.</h1>
+      
+      .<br/>
+      Click on Create button below for creating new admin:
+      &nbsp;&nbsp;<button onClick={() => createAdmin("")}>Add Admin</button>
+      <br />
+      <hr />
+      <h3>You can view all users here</h3>
+      <UsersList/>
+      <br />
+      <br />
     </div>
    );
 }

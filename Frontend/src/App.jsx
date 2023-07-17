@@ -10,6 +10,7 @@ import Footer from './components/FooterSection/Footer';
 import AdminProfile from "./components/AdminManagement/AdminProfile";
 import ExploreLibrary from "./components/ExploreLibrary";
 import UserProfile from "./components/UserManagement/UserProfile";
+import AddAdminForm from "./components/AdminManagement/AddAdminForm";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/user-profile" element={<UserProfile/>} />
         <Route path="/homes" element={<ExploreLibrary />} />
         <Route path="/update/:id" element={<UpdateHome />} />
+        <Route path="/admin-profile/admin/create" element={<AddAdminForm />} />
       </Routes>
       <Footer />
     </>
