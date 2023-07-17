@@ -21,7 +21,7 @@ const SlideNavbar = () => {
     event.preventDefault(); // Prevent default form submission
     axios.post("http://localhost:3636/user/signup", { email, password })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
           navigate("/user-profile");
@@ -35,7 +35,7 @@ const SlideNavbar = () => {
     event.preventDefault(); // Prevent default form submission
     axios.post("http://localhost:3636/user/login", { email, password })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
           navigate("/user-profile");

@@ -20,7 +20,7 @@ function App() {
         <Route path="/admin" element={<AdminSlideNav/>} />
         <Route path="/admin-profile" element={<AdminProfile/>} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreateHome />} />
+        <Route path="/create/:userId" element={<CreateHome />} />
         <Route path="/user-profile" element={<UserProfile/>} />
         <Route path="/homes" element={<ExploreLibrary />} />
         <Route path="/update/:id" element={<UpdateHome />} />
