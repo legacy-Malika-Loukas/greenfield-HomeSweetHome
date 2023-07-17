@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import "./ExploreLibrary.css"
 
 function ExploreLibrary() {
   const [homes, setHomes] = useState([]);
@@ -26,28 +27,25 @@ function ExploreLibrary() {
 
   return ( 
     <div>
-      <Row xs={1} md={4} className="g-4">
-      {homes.map(home =>{
-        return (
-          <Col key={home._id} >
-            <Card>
-              <Card.Body>
-              <div>
-                <Card.Img variant="top" src={home.image} alt="image" />
-              </div>
-                <Card.Title>{home.title}</Card.Title>
-                <Card.Text>{home.city}</Card.Text>
-                <Card.Text>{home.address}</Card.Text>
-                <Card.Text>{home.text}</Card.Text>
-                <Card.Text>{home.price}</Card.Text>
+      <Row xs={1} md={5} className="g-1 mt-4 explore-card-row "> 
+        {homes.map(home => (
+          <Col key={home._id} className="mb-4 ">
+            <Card className="explore-card mt-2"> 
+              <Card.Img variant="top" src={home.image} alt="image" className="explore-card-img" />
+              <Card.Body className="explore-card-body">
+                <Card.Title className="explore-card-title">{home.title}</Card.Title>
+                <Card.Text className="explore-card-text">{home.city}</Card.Text>
+                <Card.Text className="explore-card-text">{home.address}</Card.Text>
+                <Card.Text className="explore-card-text">{home.text}</Card.Text>
+                <Card.Text className="explore-card-text">{home.price}</Card.Text>
+                <button className="explore-button">View Details</button>
               </Card.Body>
             </Card>
           </Col>
-        )
-      })}     
-    </Row>
+        ))}
+      </Row>
     </div>
-   );
+  );
 }
 
 export default ExploreLibrary;
