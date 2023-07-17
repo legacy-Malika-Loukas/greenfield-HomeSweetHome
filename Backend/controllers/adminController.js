@@ -70,7 +70,7 @@ const verifyAdmin = async (req, res) =>{
   }
 }
 
-// Delete User
+// Delete User by ID
 const deleteUser = async(req, res) =>{
   const { userId } = req.params;
   try {
@@ -103,20 +103,24 @@ const deleteAdmin = async(req, res) =>{
   }
 }
 
-const updateHome = async (req, res) => {
-  await HomeModel.findByIdAndUpdate({_id: req.params.id}, req.body)
-  res.send({msg: "Home updated successfully"})
-};
-
 const deleteHome = async (req, res) => {
-  await HomeModel.deleteOne({_id: req.params.id});
+  await Home.deleteOne({_id: req.params.id});
   res.send({msg: "Home deleted successfully"})
 };
 
+const getAllUsers = async(req, res) =>{
+  try {
+    const users = await User.find();
+    res.send(users)
+  } catch (error) {
+    res.send({error: "Failed to get users"})
+  }
+}
+
 const getAllUserHomes = async (req, res)=> {
   try {
-    const homes = await HomeModel.find({userId: req.params.userId});
-    console.log(homes)
+    const homes = await Home.find({userId: req.params.userId});
+    // console.log(homes)
     res.send(homes);
   } catch (error) {
     console.log("Error in getting user's all home", error);
@@ -133,7 +137,7 @@ module.exports = {
   deleteUser,
   addAdmin,
   deleteAdmin,
-  updateHome,
   deleteHome,
-  getAllUserHomes
+  getAllUsers,
+  getAllUserHomes,
 }

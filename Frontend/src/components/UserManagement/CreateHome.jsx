@@ -1,23 +1,21 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function CreateHome() {
+  const {userId} = useParams();
   const [image, setImage] = useState();
   const [title, setTitle] = useState();
   const [city, setCity] = useState();
   const [address, setAddress] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-  const [user, setUser] = useState({
-    _id:"",
-    email:"",
-  });
+ 
   const navigate = useNavigate();
 
   const Submit = (e) => {
     e.preventDefault();
-    console.log("haha")
     axios
       .post("http://localhost:3636/homes/", {
         image,
@@ -26,11 +24,11 @@ function CreateHome() {
         address,
         description,
         price,
-        userId: user._id,
+        userId,
       })
       .then(data => {
         console.log(data)
-        navigate("/profile")
+        navigate("/user-profile")
       })
       .catch(error => console.log(error));
   };
