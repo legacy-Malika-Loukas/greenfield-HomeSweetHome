@@ -10,40 +10,45 @@ function UsersList() {
     if (confirmDelete) {
       try {
         axios.delete(`http://localhost:3636/admin/user/${id}`).then((response) =>{
-          console.log(response.data)
-        getUsers(users._id)
-        })
+          console.log(response.data);
+          getUsers(); // Fetch updated list of users after deleting
+        });
       } catch (error) {
-        console.log({error: "Error deleting user"})
+        console.log({error: "Error deleting user"});
       }
     }
-  }
+  };
 
-  const getUsers = async () =>{
+  const getUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:3636/admin/users")
-      setUsers(response.data)
+      const response = await axios.get("http://localhost:3636/admin/users");
+      setUsers(response.data);
     } catch (error) {
-      console.log({error: "Error fetching user"})
+      console.log({error: "Error fetching user"});
     }
-  }
+  };
 
-  useEffect(() =>{  
+  useEffect(() => {  
     getUsers();
-  },[])
+  }, []);
 
-  return ( 
-    <div>
+  return (
+    <div className="users-list-container">
       <h2>This is the users list:</h2>
-      {users.map((user) =>(
-        <div key={user._id}>
-          <p>{user.email}</p>
-          <button onClick={()=> deleteUser()}>Delete User</button>
-        </div>
-      ))}
-
+      {users.length > 0 ? (
+        users.map((user) => (
+          <div key={user._id} className="user-card">
+            <p className="user-email">{user.email}</p>
+            <button className="delete-button" onClick={() => deleteUser(user._id)}>
+              Delete User
+            </button>
+          </div>
+        ))
+      ) : (
+        <p className="no-users-message">No users found.</p>
+      )}
     </div>
-   );
+  );
 }
 
 export default UsersList;

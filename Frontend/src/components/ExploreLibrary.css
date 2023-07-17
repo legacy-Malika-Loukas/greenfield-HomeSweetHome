@@ -1,0 +1,60 @@
+/* ExploreLibrary.css */
+
+/* Custom card style */
+.explore-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .explore-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .explore-card-img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .explore-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .explore-card-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .explore-card-text:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last paragraph */
+  }
+  
+  .explore-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .explore-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media query to adjust card layout on smaller screens */
+  @media (max-width: 767px) {
+    .explore-card {
+      width: 100%; /* Make cards occupy full width on smaller screens */
+    }
+  }

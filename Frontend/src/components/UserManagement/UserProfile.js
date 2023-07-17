@@ -70,48 +70,48 @@ function UserProfile() {
   }, [navigate]);
 
   return (
-    <div>
+    <div className="user-profile-container">
       <div>
-        <h2>Welcome to your account {user?.email}</h2>
-       <Button className="add-btn" variant="success" size="lg" onClick={() => handleCreate()}>Add new house</Button>
+        <h2 className="user-profile-heading">Welcome to your account {user?.email}</h2>
+        <Button className="add-btn" variant="success" size="lg" onClick={() => handleCreate()}>Add new house</Button>
       </div>
-      
+
       <br />
       {homes.length > 0 ? (
         <Row xs={1} md={4} className="g-4">
           {homes.map((home) => (
             <Col key={home._id}>
-              <Card>
-                <Card.Body>
-                  <div>
-                    <Card.Img variant="top" src={home.image} alt="image" />
-                  </div>
-                  <Card.Title>{home.title}</Card.Title>
-                  <Card.Text>{home.city}</Card.Text>
-                  <Card.Text>{home.address}</Card.Text>
-                  <Card.Text>{home.text}</Card.Text>
-                  <Card.Text>{home.price}</Card.Text>
+              <Card className="card">
+                <div className="card-img-container">
+                  <Card.Img variant="top" src={home.image} alt="image" className="card-img" />
+                </div>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title">{home.title}</Card.Title>
+                  <Card.Text className="card-text">{home.city}</Card.Text>
+                  <Card.Text className="card-text">{home.address}</Card.Text>
+                  <Card.Text className="card-text">{home.text}</Card.Text>
+                  <Card.Text className="card-text">{home.price}</Card.Text>
 
-                 
-                  <ButtonGroup size="sm" className="mb-2">
-                    <Button variant="danger btn-sm" onClick={() => handleDelete(home._id)}>
-                      <i className="bi bi-trash " /> Delete
-                    </Button>
-                    <Button variant="primary btn-sm" onClick={() => handleUpdate(home._id)}>
-                      <i className="bi bi-pencil-square " /> Update
-                    </Button>
-                  </ButtonGroup>
-                  
+                  <div className="buttons-container">
+                    <ButtonGroup size="sm" className="mb-2">
+                      <Button variant="danger btn-sm delete-button" onClick={() => handleDelete(home._id)}>
+                        <i className="bi bi-trash" /> Delete
+                      </Button>
+                      <Button variant="primary btn-sm update-button" onClick={() => handleUpdate(home._id)}>
+                        <i className="bi bi-pencil-square" /> Update
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
       ) : (
-        <div>No homes found.</div>
-        
+        <div className="no-homes-message">No homes found.</div>
       )}
-   </div>
+    </div>
   );
 }
 

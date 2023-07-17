@@ -11,21 +11,21 @@ function AdminProfile() {
   }
 
 
-  return ( 
-    <div>
-      <h1>This is the admin profile page.</h1>
-      
-      .<br/>
-      Click on Create button below for creating new admin:
-      &nbsp;&nbsp;<button onClick={() => createAdmin("")}>Add Admin</button>
+  return (
+    <div className="admin-profile-container">
+      <h1 className="admin-profile-heading">This is the admin profile page.</h1>
+
+      <br/>
+      Click on the Create button below to create a new admin:
+      &nbsp;&nbsp;<button className="create-admin-button" onClick={() => createAdmin("")}>Add Admin</button>
       <br />
       <hr />
-      <h3>You can view all users here</h3>
+      <h3 className="users-list-heading">You can view all users here</h3>
       <UsersList/>
       <br />
       <br />
     </div>
-   );
+  );
 }
 
 export default AdminProfile;

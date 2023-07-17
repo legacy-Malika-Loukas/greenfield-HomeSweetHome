@@ -279,3 +279,212 @@ margin: 20px 70px;
        grid-column-gap: 30px;
        
    } */
+
+   /* UsersList.css */
+
+.users-list-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.user-card {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-email {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.delete-button {
+  padding: 6px 12px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.no-users-message {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* AdminProfile.css */
+
+.admin-profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-profile-heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.create-admin-button {
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-admin-button:hover {
+  background-color: #0d8bf7;
+}
+
+.users-list-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Import the same styles used in UsersList.css for consistency */
+.user-card {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-email {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.delete-button {
+  padding: 6px 12px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.no-users-message {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* UserProfile.css */
+
+.user-profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.user-profile-heading {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+
+
+.add-btn {
+  margin-bottom: 20px;
+}
+
+.card-img {
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card {
+  height: 350px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* Limit title height to fit within the card */
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  /* Limit text height to fit within the card */
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 10px;
+  flex: 1;
+  display: flex; /* Add display:flex to allow flex items to align vertically */
+  flex-direction: column; /* Align flex items vertically */
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button,
+.update-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.delete-button:hover,
+.update-button:hover {
+  background-color: #d32f2f;
+}
+
+.no-homes-message {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
