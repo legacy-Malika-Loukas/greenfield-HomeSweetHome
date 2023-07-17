@@ -42,7 +42,7 @@ const data = [
   },
 
   {
-      id: 3,
+      id: 4,
       title: "Explore Africa",
       description: "Safari on a budget.",
       price: 50,

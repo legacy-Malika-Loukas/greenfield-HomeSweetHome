@@ -24,7 +24,7 @@ const SlideNavbar = () => {
         console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
-          navigate("/profile");
+          navigate("/user-profile");
         } else {
           setErrorMessage("Please write a valid username");
         }
@@ -38,7 +38,7 @@ const SlideNavbar = () => {
         console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
-          navigate("/profile");
+          navigate("/user-profile");
         } else {
           alert(data.msg);
         }

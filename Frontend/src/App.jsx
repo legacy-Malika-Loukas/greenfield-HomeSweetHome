@@ -1,15 +1,15 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import CreateHome from "./pages/CreateHome";
+import HomePage from "./components/Homepage/HomePage";
+import CreateHome from "./components/UserManagement/CreateHome";
 import { Routes, Route } from "react-router-dom";
-import UpdateHome from "./pages/UpdateHome";
+import UpdateHome from "./components/UserManagement/UpdateHome";
 import Navbar from "./components/Navbar";
-import SlideNavbar from './components/SlideNavbar';
-import AdminSlideNav from "./components/AdminSlideNav";
-import Footer from './components/Footer';
-import AdminProfile from "./components/AdminProfile";
-import ExploreLibrary from "./pages/ExploreLibrary";
-import UserPage from "./pages/UserPage";
+import SlideNavbar from './components/Login_Logout/SlideNavbar';
+import AdminSlideNav from "./components/Login_Logout/AdminSlideNav";
+import Footer from './components/FooterSection/Footer';
+import AdminProfile from "./components/AdminManagement/AdminProfile";
+import ExploreLibrary from "./components/ExploreLibrary";
+import UserProfile from "./components/UserManagement/UserProfile";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/admin-profile" element={<AdminProfile/>} />
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreateHome />} />
-        <Route path="/profile" element={<UserPage/>} />
+        <Route path="/user-profile" element={<UserProfile/>} />
         <Route path="/homes" element={<ExploreLibrary />} />
         <Route path="/update/:id" element={<UpdateHome />} />
       </Routes>
