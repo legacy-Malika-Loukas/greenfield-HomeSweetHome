@@ -4,6 +4,7 @@
 .explore-card {
     border: none;
     border-radius: 10px;
+    width: 250px !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
   }
@@ -57,4 +58,25 @@
     .explore-card {
       width: 100%; /* Make cards occupy full width on smaller screens */
     }
+  }
+
+  .home-card{
+    width: 250px !important;
+    margin-left: 100px;
+   
+  }
+
+  .home-img{
+    height: 200px !important;
+  }
+
+  .to-home {
+    cursor: pointer;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #0056b3;
+  }
+
+  .to-home:hover{
+    color: #007bff;
   }

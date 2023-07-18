@@ -83,12 +83,22 @@ const deleteUser = async(req, res) =>{
 
 // Add admin
 const addAdmin = async(req, res) =>{
-  const { username, password } = req.body;
   try {
-    const newAdmin = await Admin.create({ username, password });
-    res.send(newAdmin)
+    const checkAdmin = await Admin.findOne({email: req.body.email})
+    if (checkAdmin) {
+      res.send({msg: "email already in use"})
+      return
+    }
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, async function(err, hash) {
+        const admin = { email: req.body.email, password: hash}
+        const createdAdmin = await Admin.create(admin);
+          const token = jwt.sign({id: createdAdmin._id}, "legacy")
+          res.send({token})       
+      });
+  });
   } catch (error) {
-    res.send({error: "An error occurred while adding an admin"})
+    console.log("Error:", error);
   }
 }
 
@@ -96,7 +106,7 @@ const addAdmin = async(req, res) =>{
 const deleteAdmin = async(req, res) =>{
   const { adminId } = req.params;;
   try {
-    await User.findByIdAndDelete(adminId);
+    await Admin.findByIdAndDelete(adminId);
     res.send({msg: "Admin deleted"})
   } catch (error) {
    res.send({error: "cannot delete Admin"})
@@ -114,6 +124,14 @@ const getAllUsers = async(req, res) =>{
     res.send(users)
   } catch (error) {
     res.send({error: "Failed to get users"})
+  }
+}
+const getAllAdmins = async(req, res) =>{
+  try {
+    const admins = await Admin.find();
+    res.send(admins)
+  } catch (error) {
+    res.send({error: "Failed to get admins"})
   }
 }
 
@@ -139,5 +157,6 @@ module.exports = {
   deleteAdmin,
   deleteHome,
   getAllUsers,
+  getAllAdmins,
   getAllUserHomes,
 }

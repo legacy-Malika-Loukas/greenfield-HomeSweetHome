@@ -11,6 +11,8 @@ import AdminProfile from "./components/AdminManagement/AdminProfile";
 import ExploreLibrary from "./components/ExploreLibrary";
 import UserProfile from "./components/UserManagement/UserProfile";
 import AddAdminForm from "./components/AdminManagement/AddAdminForm";
+import HomeDetails from "./components/Homepage/HomeDetails";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/homes" element={<ExploreLibrary />} />
         <Route path="/update/:id" element={<UpdateHome />} />
         <Route path="/admin-profile/admin/create" element={<AddAdminForm />} />
+        <Route exact path="/homes/:id" element={<HomeDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
