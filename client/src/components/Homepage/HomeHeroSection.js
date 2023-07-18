@@ -5,7 +5,7 @@ import axios from "axios"
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import "../../components/ExploreLibrary.css"
+import "../ExploreLibrary.css"
 import { Link } from 'react-router-dom';
 
 function HomeHeroSection() {
