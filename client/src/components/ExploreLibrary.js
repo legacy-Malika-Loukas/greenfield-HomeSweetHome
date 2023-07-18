@@ -3,7 +3,8 @@ import axios from "axios";
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import "./ExploreLibrary.css"
+import "./ExploreLibrary.css";
+import { Link } from 'react-router-dom';
 
 function ExploreLibrary() {
   const [homes, setHomes] = useState([]);
@@ -27,10 +28,12 @@ function ExploreLibrary() {
 
   return ( 
     <div>
+      <h1>Discover all our homes in cities near and far</h1>
       <Row xs={1} md={5} className="g-1 mt-4 explore-card-row "> 
         {homes.map(home => (
           <Col key={home._id} className="mb-4 ">
-            <Card className="explore-card mt-2"> 
+            <Link to={`/homes/${home._id}`} className="explore-link"> 
+            <Card className="explore-card mt-2">
               <Card.Img variant="top" src={home.image} alt="image" className="explore-card-img" />
               <Card.Body className="explore-card-body">
                 <Card.Title className="explore-card-title">{home.title}</Card.Title>
@@ -41,6 +44,7 @@ function ExploreLibrary() {
                 <button className="explore-button">View Details</button>
               </Card.Body>
             </Card>
+          </Link>
           </Col>
         ))}
       </Row>

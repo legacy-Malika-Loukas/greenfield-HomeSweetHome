@@ -1,0 +1,16 @@
+{
+  "name": "legacy-homesweethome",
+  "version": "1.0.0",
+  "description": "HomeSweetHome is a web page that users can find homes. They can create their own account and do modifications regarding the home publications. In other words, the user has the ability to update, delete and get and post the announcements he wants about homes.",
+  "main": "server.js",
+  "scripts": {
+    "install-server": "cd Backend && npm install",
+    "start-server": "cd Backend && node server.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

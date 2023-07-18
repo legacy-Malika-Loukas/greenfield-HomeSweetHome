@@ -10,11 +10,12 @@ const getAllHomes = async (req, res) => {
   res.send(homes)
 };
 
-// const getOneHome = async (req, res) => {
-//   const home = await HomeModel.findOne({_id: req.params.id})
-//   res.send(home)
+const getOneHome = async (req, res) => {
+  const home = await HomeModel.findOne({_id: req.params.id})
+  res.send(home)
+  console.log(home)
  
-// };
+};
 
 const updateHome = async (req, res) => {
   await HomeModel.findByIdAndUpdate({_id: req.params.id}, req.body)
@@ -37,13 +38,24 @@ const getAllUserHomes = async (req, res)=> {
  
 }
   
+const searchByCity = async (req, res) => {
+  const { city } = req.params;
+  try {
+    const homes = await HomeModel.find({ city });
+    res.send(homes);
+  } catch (error) {
+    console.log("Error in searching homes by city:", error);
+    res.send("Error");
+  }
+};
 
 
 module.exports = {
   postHome,
   getAllHomes,
-  // getOneHome,
+  getOneHome,
   updateHome,
   deleteHome,
   getAllUserHomes,
+  searchByCity
 };
